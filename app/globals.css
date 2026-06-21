@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a `.dark` class on <html> (managed by next-themes). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─────────────────────────────  BRAND TOKENS  ───────────────────────────── */
+:root {
+  --purple:      #534AB7;
+  --purple-mid:  #7F77DD;
+  --purple-lt:   #AFA9EC;
+  --purple-tint: #EEEDFE;
+  --midnight:    #26215C;
+  --teal:        #1D9E75;
+  --teal-lt:     #5DCAA5;
+  --teal-tint:   #E1F5EE;
+  --ink:         #111110;
+  --charcoal:    #2C2C2A;
+  --grey:        #888780;
+  --grey-lt:     #D3D1C7;
+  --off-white:   #F5F4F0;
+  --surface:     #FFFFFF;
+  --border:      rgba(0, 0, 0, 0.08);
+  --nav-bg:      rgba(255, 255, 255, 0.92);
+  --page-bg:     #FFFFFF;
+  --surface-dark:      #26215C;
+  --surface-dark-text: #FFFFFF;
+  --surface-dark-muted:#C9C7E8;
+}
+
+.dark {
+  --purple:      #7F77DD;
+  --purple-mid:  #9A93E5;
+  --purple-lt:   #C2BCF2;
+  --purple-tint: #2E2A5C;
+  --midnight:    #161330;
+  --teal:        #3DBE93;
+  --teal-lt:     #7DDCB8;
+  --teal-tint:   #133D32;
+  --ink:         #F2F1ED;
+  --charcoal:    #D8D6CE;
+  --grey:        #9C9A92;
+  --grey-lt:     #43413E;
+  --off-white:   #1C1A22;
+  --surface:     #1B1A21;
+  --border:      rgba(255, 255, 255, 0.10);
+  --nav-bg:      rgba(19, 18, 24, 0.88);
+  --page-bg:     #131218;
+  --surface-dark:      #1C1845;
+  --surface-dark-text: #FFFFFF;
+  --surface-dark-muted:#C9C7E8;
+}
+
+/* ─────────────────────────────  TAILWIND THEME MAP  ─────────────────────── */
+@theme inline {
+  --color-purple:       var(--purple);
+  --color-purple-mid:   var(--purple-mid);
+  --color-purple-lt:    var(--purple-lt);
+  --color-purple-tint:  var(--purple-tint);
+  --color-midnight:     var(--midnight);
+  --color-teal:         var(--teal);
+  --color-teal-lt:      var(--teal-lt);
+  --color-teal-tint:    var(--teal-tint);
+  --color-ink:          var(--ink);
+  --color-charcoal:     var(--charcoal);
+  --color-grey:         var(--grey);
+  --color-grey-lt:      var(--grey-lt);
+  --color-off-white:    var(--off-white);
+  --color-surface:      var(--surface);
+  --color-page:         var(--page-bg);
+  --color-border:       var(--border);
+  --color-surface-dark: var(--surface-dark);
+
+  --font-display: var(--font-sora);
+  --font-body:    var(--font-inter);
+  --font-serif:   var(--font-instrument);
+}
+
+/* ─────────────────────────────  BASE  ──────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+  ::selection {
+    background: var(--purple);
+    color: #fff;
+  }
+  /* Visible keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ─────────────────────────────  TYPOGRAPHY HELPERS  ─────────────────────── */
+.font-display { font-family: var(--font-sora), system-ui, sans-serif; }
+.font-serif   { font-family: var(--font-instrument), Georgia, serif; }
+
+/* Editorial accent — Instrument Serif italic, brand purple. */
+.editorial {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--purple);
+}
+
+/* ─────────────────────────────  COMPONENT CLASSES  ──────────────────────── */
+@layer components {
+  .btn-primary {
+    font-family: var(--font-sora), sans-serif;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5
+           text-sm font-semibold text-white;
+    background: var(--purple);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: var(--midnight);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(38, 33, 92, 0.22);
+  }
+
+  .btn-secondary {
+    font-family: var(--font-sora), sans-serif;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3
+           text-sm font-semibold;
+    color: var(--ink);
+    border: 1.5px solid var(--grey-lt);
+    background: transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-secondary:hover { border-color: var(--purple); color: var(--purple); }
+
+  .eyebrow {
+    font-family: var(--font-sora), sans-serif;
+    @apply inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em];
+    color: var(--teal);
+  }
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6;
+    background: currentColor;
+  }
+  .eyebrow.purple { color: var(--purple); }
+
+  .section-title {
+    font-family: var(--font-sora), sans-serif;
+    @apply text-[clamp(30px,3.4vw,44px)] font-bold leading-[1.12] tracking-[-0.01em];
+    color: var(--ink);
+  }
+  .hero-h1 {
+    font-family: var(--font-sora), sans-serif;
+    @apply text-[clamp(40px,5.2vw,64px)] font-bold leading-[1.06] tracking-[-0.02em];
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    @apply rounded-3xl;
+  }
+}
+
+/* ─────────────────────────────  SCROLL REVEAL  ──────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
