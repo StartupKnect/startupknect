@@ -62,8 +62,7 @@ export default function ContactPage() {
               className="mt-8 border-t pt-7 text-[13px] leading-[1.7]"
               style={{ borderColor: "rgba(255,255,255,0.1)", color: "#9D9AC4" }}
             >
-              Sponsor and partnership outreach is welcome for any event format — free
-              or paid for students.
+              Sponsor and partnership outreach is welcome for any event format.
             </p>
           </div>
         </Reveal>

@@ -66,11 +66,6 @@ export default function HomePage() {
               </Link>
             </div>
           </Reveal>
-          <Reveal delay={320}>
-            <p className="mt-7 text-[13px]" style={{ color: "var(--grey-lt)" }}>
-              Knect Live and Club Collabs are always free for students.
-            </p>
-          </Reveal>
         </div>
 
         <div className="flex flex-col justify-center gap-3.5 py-12 md:py-20 md:pl-16">
@@ -100,11 +95,11 @@ export default function HomePage() {
                 <span
                   className="font-display whitespace-nowrap rounded-full px-2.5 py-1 text-[10px] font-bold"
                   style={{
-                    background: f.pricing === "free" ? "var(--teal-tint)" : "var(--purple-tint)",
-                    color: f.pricing === "free" ? "var(--teal)" : "var(--purple)",
+                    background: f.accent === "teal" ? "var(--teal-tint)" : "var(--purple-tint)",
+                    color: f.accent === "teal" ? "var(--teal)" : "var(--purple)",
                   }}
                 >
-                  {f.pricing === "free" ? "FREE" : "VARIES"}
+                  {f.modeBadge}
                 </span>
               </Link>
             </Reveal>

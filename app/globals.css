@@ -5,9 +5,9 @@
 
 /* ─────────────────────────────  BRAND TOKENS  ───────────────────────────── */
 :root {
-  --purple:      #534AB7;
-  --purple-mid:  #7F77DD;
-  --purple-lt:   #AFA9EC;
+  --purple:      #4628CE;
+  --purple-mid:  #7367DC;
+  --purple-lt:   #ABA2EF;
   --purple-tint: #EEEDFE;
   --midnight:    #26215C;
   --teal:        #1D9E75;
@@ -28,8 +28,8 @@
 }
 
 .dark {
-  --purple:      #7F77DD;
-  --purple-mid:  #9A93E5;
+  --purple:      #8B82F2;
+  --purple-mid:  #A39BF0;
   --purple-lt:   #C2BCF2;
   --purple-tint: #2E2A5C;
   --midnight:    #161330;

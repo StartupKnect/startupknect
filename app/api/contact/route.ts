@@ -49,11 +49,14 @@ export async function POST(request: Request) {
   const to = process.env.CONTACT_TO_EMAIL ?? "startupknect@gmail.com";
   const from = process.env.CONTACT_FROM_EMAIL ?? "StartupKnect <onboarding@resend.dev>";
 
-  // If email delivery isn't configured yet, log and accept so the form still
-  // works in development / preview. Wire RESEND_API_KEY to enable real sends.
+  // If email delivery isn't configured, tell the client so it can offer the
+  // mailto fallback (rather than silently dropping the message).
   if (!apiKey) {
     console.info("[contact] (no RESEND_API_KEY set) submission:", { role, name, email });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json(
+      { error: "Email isn't set up yet — use the link below to email us directly." },
+      { status: 503 }
+    );
   }
 
   try {

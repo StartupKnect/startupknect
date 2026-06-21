@@ -9,13 +9,6 @@ export const metadata: Metadata = {
     "Four formats, one community: Knect Live, Club Collabs, Knect Circles and Knect Pitch — each connecting students with real startup founders.",
 };
 
-const pricingMatrix = [
-  { name: "Knect Live", pricing: "Always free", accent: "teal", note: "Lowest cost to run, easiest to scale wide." },
-  { name: "Club Collabs", pricing: "Always free", accent: "teal", note: "Hosted inside a partner club's own gathering." },
-  { name: "Knect Circles", pricing: "Free or paid", accent: "purple", note: "Decided per event, based on venue and production cost." },
-  { name: "Knect Pitch", pricing: "Free or paid", accent: "purple", note: "Larger, scaled editions are most likely to carry a ticket." },
-] as const;
-
 export default function EventsPage() {
   return (
     <>
@@ -26,9 +19,9 @@ export default function EventsPage() {
             Four formats. <span className="editorial">One community.</span>
           </h1>
           <p className="mt-5 max-w-[620px] text-base leading-[1.7]" style={{ color: "var(--grey)" }}>
-            Every format connects students with real founders. They differ in mode,
-            scale, and whether students pay — but sponsor and venue partnerships
-            apply to all four, regardless.
+            Every format connects students with real founders. They differ in
+            mode and scale — but the goal is the same, and sponsor and venue
+            partnerships apply to all four.
           </p>
         </Reveal>
 
@@ -44,7 +37,7 @@ export default function EventsPage() {
                   style={f.flagship ? { borderColor: "var(--purple-lt)" } : undefined}
                 >
                   <div
-                    className="mb-5 flex h-13 w-13 items-center justify-center rounded-2xl text-[22px]"
+                    className="mb-5 flex items-center justify-center rounded-2xl text-[22px]"
                     style={{
                       width: 52,
                       height: 52,
@@ -74,18 +67,14 @@ export default function EventsPage() {
                   <p className="mb-5 text-[14px] leading-[1.65]" style={{ color: "var(--grey)" }}>
                     {f.description}
                   </p>
-                  <dl className="flex flex-col gap-2 border-t pt-4.5" style={{ borderColor: "var(--border)", paddingTop: 18 }}>
+                  <dl
+                    className="flex flex-col gap-2 border-t"
+                    style={{ borderColor: "var(--border)", paddingTop: 18 }}
+                  >
                     <div className="flex justify-between text-[12.5px]">
                       <dt style={{ color: "var(--grey-lt)" }}>Mode</dt>
-                      <dd className="font-semibold" style={{ color: "var(--charcoal)" }}>{f.mode}</dd>
-                    </div>
-                    <div className="flex justify-between gap-2 text-[12.5px]">
-                      <dt style={{ color: "var(--grey-lt)" }}>Students pay</dt>
-                      <dd
-                        className="text-right font-semibold"
-                        style={{ color: isTeal ? "var(--teal)" : "var(--purple)" }}
-                      >
-                        {f.pricing === "free" ? "Always free" : "Free or paid — per event"}
+                      <dd className="font-semibold" style={{ color: "var(--charcoal)" }}>
+                        {f.mode}
                       </dd>
                     </div>
                   </dl>
@@ -132,36 +121,6 @@ export default function EventsPage() {
         </Reveal>
       </section>
 
-      {/* FREE VS PAID */}
-      <section className="px-6 pb-6 md:px-14">
-        <Reveal>
-          <span className="eyebrow purple">How students experience it</span>
-          <h2 className="section-title mt-4 max-w-[720px]">
-            Free where it matters most. <span className="editorial">Selective where it scales.</span>
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {pricingMatrix.map((p, i) => (
-            <Reveal key={p.name} delay={i * 80}>
-              <div className="card h-full p-7">
-                <h3 className="font-display text-[15px] font-bold" style={{ color: "var(--ink)" }}>
-                  {p.name}
-                </h3>
-                <div
-                  className="my-2 text-xs font-bold"
-                  style={{ color: p.accent === "teal" ? "var(--teal)" : "var(--purple)" }}
-                >
-                  {p.pricing}
-                </div>
-                <p className="text-[13.5px] leading-[1.6]" style={{ color: "var(--grey)" }}>
-                  {p.note}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* SPONSOR CTA */}
       <section className="px-6 py-20 md:px-14">
         <Reveal>
@@ -177,7 +136,7 @@ export default function EventsPage() {
             </div>
             <p className="text-[14.5px] leading-[1.7]" style={{ color: "var(--charcoal)" }}>
               <b style={{ color: "var(--midnight)" }}>Sponsoring StartupKnect?</b> Every
-              format — free or paid for students — is a sponsorship opportunity.{" "}
+              format is a sponsorship opportunity.{" "}
               <Link
                 href="/contact"
                 className="font-semibold underline"
