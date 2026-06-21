@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { SITE } from "@/lib/site";
 
 const ROLES = [
   "Student",
@@ -19,11 +20,27 @@ export function ContactForm() {
   const formId = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [fallbackHref, setFallbackHref] = useState<string | null>(null);
+
+  // Build a prefilled mailto so a submission is never lost if the API can't
+  // deliver (e.g. email provider not yet configured).
+  function buildMailto(data: Record<string, FormDataEntryValue>) {
+    const role = String(data.role ?? "Not specified");
+    const name = String(data.name ?? "");
+    const subject = `New StartupKnect enquiry — ${role}`;
+    const body = `Role: ${role}\nName: ${name}\nEmail: ${String(
+      data.email ?? ""
+    )}\n\n${String(data.message ?? "")}`;
+    return `mailto:${SITE.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     setError(null);
+    setFallbackHref(null);
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -42,8 +59,11 @@ export function ContactForm() {
       setStatus("success");
       form.reset();
     } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Something went wrong."
+      );
+      setFallbackHref(buildMailto(data));
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
 
@@ -157,9 +177,22 @@ export function ContactForm() {
         {status === "submitting" ? "Sending…" : "Send message →"}
       </button>
 
-      <p aria-live="polite" className="min-h-[1.25rem] text-[13px]" style={{ color: "#B4413F" }}>
-        {status === "error" ? error : ""}
-      </p>
+      <div aria-live="polite" className="min-h-[1.25rem]">
+        {status === "error" && (
+          <div className="text-[13px]" style={{ color: "#B4413F" }}>
+            <p>{error}</p>
+            {fallbackHref && (
+              <a
+                href={fallbackHref}
+                className="mt-2 inline-flex font-semibold underline"
+                style={{ color: "var(--purple)" }}
+              >
+                Open your email app to send →
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </form>
   );
 }
