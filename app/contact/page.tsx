@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  { icon: "✉️", label: "EMAIL", value: "hello@startupknect.in", href: "mailto:hello@startupknect.in" },
+  { icon: "✉️", label: "EMAIL", value: "startupknect@gmail.com", href: "mailto:startupknect@gmail.com" },
   { icon: "◎", label: "INSTAGRAM", value: "@startupknect", href: "https://instagram.com/startupknect" },
   { icon: "in", label: "LINKEDIN", value: "StartupKnect", href: "https://linkedin.com/company/startupknect" },
 ];

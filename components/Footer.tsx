@@ -16,7 +16,7 @@ const formats = [
 ];
 
 const connect = [
-  { href: "mailto:hello@startupknect.in", label: "hello@startupknect.in", external: true },
+  { href: "mailto:startupknect@gmail.com", label: "startupknect@gmail.com", external: true },
   { href: "https://instagram.com/startupknect", label: "Instagram", external: true },
   { href: "https://linkedin.com/company/startupknect", label: "LinkedIn", external: true },
 ];
@@ -76,7 +76,7 @@ export function Footer() {
           © {new Date().getFullYear()} StartupKnect. A student–founder community.
         </p>
         <div className="flex gap-3.5">
-          <SocialLink href="mailto:hello@startupknect.in" label="Email">✉</SocialLink>
+          <SocialLink href="mailto:startupknect@gmail.com" label="Email">✉</SocialLink>
           <SocialLink href="https://instagram.com/startupknect" label="Instagram">◎</SocialLink>
           <SocialLink href="https://linkedin.com/company/startupknect" label="LinkedIn">in</SocialLink>
         </div>

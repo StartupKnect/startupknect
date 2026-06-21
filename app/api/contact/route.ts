@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? "hello@startupknect.in";
+  const to = process.env.CONTACT_TO_EMAIL ?? "startupknect@gmail.com";
   const from = process.env.CONTACT_FROM_EMAIL ?? "StartupKnect <onboarding@resend.dev>";
 
   // If email delivery isn't configured yet, log and accept so the form still
