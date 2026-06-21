@@ -78,7 +78,7 @@ export default function RootLayout({
       className={`${sora.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-full focus:bg-[var(--purple)] focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"

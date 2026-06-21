@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { EVENT_FORMATS } from "@/lib/events";
+import { SITE } from "@/lib/site";
 
 const principles = [
   {
@@ -52,11 +53,16 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={240}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link href="/events" className="btn-primary">
-                Explore events →
-              </Link>
-              <Link href="/about" className="btn-secondary">
-                Our mission
+              <a
+                href={SITE.whatsappCommunity}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary"
+              >
+                Join the community →
+              </a>
+              <Link href="/events" className="btn-secondary">
+                Explore events
               </Link>
             </div>
           </Reveal>

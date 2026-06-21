@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,9 +10,10 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  { icon: "✉️", label: "EMAIL", value: "startupknect@gmail.com", href: "mailto:startupknect@gmail.com" },
-  { icon: "◎", label: "INSTAGRAM", value: "@startupknect", href: "https://instagram.com/startupknect" },
-  { icon: "in", label: "LINKEDIN", value: "StartupKnect", href: "https://linkedin.com/company/startupknect" },
+  { icon: "💬", label: "WHATSAPP", value: "Join the community", href: SITE.whatsappCommunity },
+  { icon: "✉️", label: "EMAIL", value: SITE.email, href: `mailto:${SITE.email}` },
+  { icon: "◎", label: "INSTAGRAM", value: "@startupknect", href: SITE.instagram },
+  { icon: "in", label: "LINKEDIN", value: "StartupKnect", href: SITE.linkedin },
 ];
 
 export default function ContactPage() {

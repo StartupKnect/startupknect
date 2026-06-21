@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo, Wordmark } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
+import { SITE } from "@/lib/site";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -70,9 +71,14 @@ export function Nav() {
         >
           Partner with us
         </Link>
-        <Link href="/events" className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
-          See events
-        </Link>
+        <a
+          href={SITE.whatsappCommunity}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-primary hidden !px-5 !py-2.5 md:inline-flex"
+        >
+          Join community
+        </a>
 
         {/* Mobile menu button */}
         <button
@@ -136,9 +142,15 @@ export function Nav() {
             <Link href="/contact" onClick={closeMenu} className="btn-secondary w-full">
               Partner with us
             </Link>
-            <Link href="/events" onClick={closeMenu} className="btn-primary w-full">
-              See events
-            </Link>
+            <a
+              href={SITE.whatsappCommunity}
+              target="_blank"
+              rel="noreferrer"
+              onClick={closeMenu}
+              className="btn-primary w-full"
+            >
+              Join community
+            </a>
           </div>
         </nav>
       </div>

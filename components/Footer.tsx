@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { SITE } from "@/lib/site";
 
 const pages = [
   { href: "/", label: "Home" },
@@ -16,9 +17,10 @@ const formats = [
 ];
 
 const connect = [
-  { href: "mailto:startupknect@gmail.com", label: "startupknect@gmail.com", external: true },
-  { href: "https://instagram.com/startupknect", label: "Instagram", external: true },
-  { href: "https://linkedin.com/company/startupknect", label: "LinkedIn", external: true },
+  { href: SITE.whatsappCommunity, label: "Join the community", external: true },
+  { href: `mailto:${SITE.email}`, label: SITE.email, external: true },
+  { href: SITE.instagram, label: "Instagram", external: true },
+  { href: SITE.linkedin, label: "LinkedIn", external: true },
 ];
 
 export function Footer() {
