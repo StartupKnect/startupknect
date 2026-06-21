@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
+import { BrandLogoOnDark } from "./BrandLogo";
 import { SITE } from "@/lib/site";
 
 const pages = [
@@ -32,12 +32,7 @@ export function Footer() {
       <div className="grid gap-10 border-b pb-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]"
         style={{ borderColor: "rgba(255,255,255,0.1)" }}>
         <div>
-          <div className="mb-4 flex items-center gap-2.5">
-            <Logo onDark />
-            <span className="font-display text-[19px] font-bold text-white">
-              Startup<span style={{ color: "#5DCAA5" }}>Knect</span>
-            </span>
-          </div>
+          <BrandLogoOnDark className="mb-4 h-8 w-auto" />
           <p className="max-w-[280px] text-[13.5px] leading-relaxed" style={{ color: "#9D9AC4" }}>
             Knowledge shared. Network built. Futures connected.
           </p>

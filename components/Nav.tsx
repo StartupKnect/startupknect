@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Logo, Wordmark } from "./Logo";
+import { BrandLogo } from "./BrandLogo";
 import { ThemeToggle } from "./ThemeToggle";
 import { SITE } from "@/lib/site";
 
@@ -39,9 +39,8 @@ export function Nav() {
       className="fixed inset-x-0 top-0 z-[200] flex h-[68px] items-center justify-between border-b px-6 backdrop-blur-xl md:px-14"
       style={{ background: "var(--nav-bg)", borderColor: "var(--border)" }}
     >
-      <Link href="/" className="flex items-center gap-2.5" aria-label="StartupKnect home">
-        <Logo />
-        <Wordmark />
+      <Link href="/" className="flex items-center" aria-label="StartupKnect home">
+        <BrandLogo className="h-7 w-auto md:h-8" />
       </Link>
 
       {/* Desktop nav */}
